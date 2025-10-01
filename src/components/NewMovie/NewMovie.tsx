@@ -30,11 +30,11 @@ export const NewMovie = ({ onAdd }: Props) => {
     // https://m.media-amazon.com/images/M/MV5BMzlmMmIxODItYzBjNC00YjMwLWIwOTAtNzVlMTBlNTNkMjZjXkEyXkFqcGc@._V1_.jpg
 
     onAdd({
-      title,
-      description,
-      imgUrl,
-      imdbUrl,
-      imdbId,
+      title: title.trim(),
+      description: description.trim(),
+      imgUrl: imgUrl.trim(),
+      imdbUrl: imdbUrl.trim(),
+      imdbId: imdbId.trim(),
     });
 
     reset();
@@ -43,7 +43,6 @@ export const NewMovie = ({ onAdd }: Props) => {
 
   return (
     <form className="NewMovie" key={count} onSubmit={handleFormSubmit}>
-      {count}
       <h2 className="title">Add a movie</h2>
 
       <TextField
@@ -91,7 +90,12 @@ export const NewMovie = ({ onAdd }: Props) => {
             type="submit"
             data-cy="submit-button"
             className="button is-link"
-            disabled={!title.trim() || !imgUrl.trim() || !imdbUrl.trim() || !imdbId.trim()}
+            disabled={
+              !title.trim() ||
+              !imgUrl.trim() ||
+              !imdbUrl.trim() ||
+              !imdbId.trim()
+            }
           >
             Add
           </button>
